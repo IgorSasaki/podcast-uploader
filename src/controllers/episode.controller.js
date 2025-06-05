@@ -1,4 +1,4 @@
-const EpisodeService = require("../services/EpisodeService");
+const EpisodeService = require("../services/episode.service");
 const { AppDataSource } = require("../database/data-source");
 const episodeRepo = AppDataSource.getRepository("Episode");
 const service = new EpisodeService(episodeRepo);

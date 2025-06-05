@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const multer = require("../config/multer");
-const PodcastController = require("../controllers/PodcastController");
-const EpisodeController = require("../controllers/EpisodeController");
+const PodcastController = require("../controllers/podcast.controller");
+const EpisodeController = require("../controllers/episode.controller");
 
 const routes = Router();
 

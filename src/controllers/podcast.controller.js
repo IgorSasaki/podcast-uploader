@@ -1,4 +1,4 @@
-const PodcastService = require("../services/PodcastService");
+const PodcastService = require("../services/podcast.service");
 const { AppDataSource } = require("../database/data-source");
 const podcastRepo = AppDataSource.getRepository("Podcast");
 const service = new PodcastService(podcastRepo);

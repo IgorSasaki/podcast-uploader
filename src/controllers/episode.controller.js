@@ -6,8 +6,14 @@ const service = new EpisodeService(episodeRepo);
 module.exports = {
   upload: async (request, response) => {
     try {
-      const { title, description, duration, publishedAt, podcastId } =
-        request.body;
+      const {
+        title,
+        description,
+        duration,
+        publishedAt,
+        podcastId,
+        createdBy,
+      } = request.body;
 
       const episode = await service.create({
         title,
@@ -16,6 +22,7 @@ module.exports = {
         publishedAt: new Date(publishedAt),
         audioPath: request.file.path,
         podcast: { id: parseInt(podcastId) },
+        createdBy: { id: parseInt(createdBy) },
       });
 
       response.status(201).json(episode);

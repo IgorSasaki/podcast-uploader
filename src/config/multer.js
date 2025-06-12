@@ -4,7 +4,9 @@ const path = require("path");
 const storage = multer.diskStorage({
   destination: path.resolve(__dirname, "..", "uploads"),
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    const ext = path.extname(file.originalname);
+    const base = file.fieldname === "audio" ? "audio" : "cover";
+    cb(null, `${base}-${Date.now()}${ext}`);
   },
 });
 

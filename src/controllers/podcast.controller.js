@@ -6,7 +6,14 @@ const service = new PodcastService(podcastRepo);
 module.exports = {
   create: async (request, response) => {
     try {
-      const podcast = await service.create(request.body);
+      const { name, description, author } = request.body;
+
+      const podcast = await service.create({
+        name,
+        description,
+        author,
+        createdBy: { id: request.user.id },
+      });
 
       response.status(201).json(podcast);
     } catch (err) {

@@ -6,14 +6,8 @@ const service = new EpisodeService(episodeRepo);
 module.exports = {
   upload: async (request, response) => {
     try {
-      const {
-        title,
-        description,
-        duration,
-        publishedAt,
-        podcastId,
-        createdBy,
-      } = request.body;
+      const { title, description, duration, publishedAt, podcastId } =
+        request.body;
 
       const audioFile = request.files["audio"]?.[0];
       const coverFile = request.files["cover"]?.[0];
@@ -29,7 +23,7 @@ module.exports = {
         audioPath: audioFile.path,
         coverImagePath: coverFile?.path ?? null,
         podcast: { id: parseInt(podcastId) },
-        createdBy: { id: parseInt(createdBy) },
+        createdBy: { id: request.user.id },
       });
 
       response.status(201).json(episode);

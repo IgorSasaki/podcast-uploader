@@ -8,6 +8,7 @@ module.exports = new EntitySchema({
     title: { type: "varchar" },
     description: { type: "text" },
     audioPath: { type: "varchar" },
+    coverImagePath: { type: "varchar", nullable: true },
     duration: { type: "int" },
     publishedAt: { type: "datetime" },
     createdAt: { type: "datetime", createDate: true },

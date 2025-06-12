@@ -7,6 +7,7 @@ module.exports = new EntitySchema({
     id: { type: "int", primary: true, generated: true },
     name: { type: "varchar" },
     email: { type: "varchar", unique: true },
+    password: { type: "varchar" },
     createdAt: { type: "datetime", createDate: true },
   },
   relations: {

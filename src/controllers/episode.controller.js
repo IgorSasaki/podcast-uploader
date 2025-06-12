@@ -15,12 +15,19 @@ module.exports = {
         createdBy,
       } = request.body;
 
+      const audioFile = request.files["audio"]?.[0];
+      const coverFile = request.files["cover"]?.[0];
+
+      if (!audioFile)
+        return res.status(400).json({ message: "Audio file is required." });
+
       const episode = await service.create({
         title,
         description,
         duration: parseInt(duration),
         publishedAt: new Date(publishedAt),
-        audioPath: request.file.path,
+        audioPath: audioFile.path,
+        coverImagePath: coverFile?.path ?? null,
         podcast: { id: parseInt(podcastId) },
         createdBy: { id: parseInt(createdBy) },
       });

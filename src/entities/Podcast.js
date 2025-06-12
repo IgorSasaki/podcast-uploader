@@ -18,6 +18,12 @@ module.exports = new EntitySchema({
     },
   },
   relations: {
+    createdBy: {
+      target: "User",
+      type: "many-to-one",
+      joinColumn: true,
+      onDelete: "SET NULL",
+    },
     episodes: {
       target: "Episode",
       type: "one-to-many",

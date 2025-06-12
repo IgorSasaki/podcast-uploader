@@ -19,5 +19,11 @@ module.exports = new EntitySchema({
       joinColumn: true,
       onDelete: "CASCADE",
     },
+    createdBy: {
+      target: "User",
+      type: "many-to-one",
+      joinColumn: true,
+      onDelete: "SET NULL",
+    },
   },
 });
